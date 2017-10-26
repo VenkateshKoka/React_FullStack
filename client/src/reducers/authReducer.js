@@ -10,7 +10,7 @@ export default function (state = null, action) {
     //console.log(state);
     switch (action.type){
         case FETCH_USER:
-            console.log("koka");
+            //console.log("koka");
             return action.payload || false;
         default :
             return state;
