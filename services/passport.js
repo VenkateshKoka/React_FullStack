@@ -25,22 +25,20 @@ passport.use(new GoogleStrategy({
         clientSecret : keys.googleClientSecret,
         callbackURL : '/auth/google/callback',
         proxy : true
-    }, (accessToken,refreshToken,profile,done) => {
+    }, async (accessToken,refreshToken,profile,done) => {
 
-        User.findOne({googleId:profile.id})
-            .then((existingUser) => {
+        const existingUser = await User.findOne({googleId:profile.id});
+
                 if(existingUser){
                 // done function has 2 args.first one error message
                     done(null, existingUser);
                 }
                 else {
-                    new User({googleId:profile.id})
-                        .save()
-                        .then(user => {
-                            done(null,user)
-                })
+                  const user = await new User({googleId:profile.id}).save();
+                  done(null,user);
+
             }
-        })
+
     })
 );
 
