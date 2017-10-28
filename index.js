@@ -45,9 +45,9 @@ require('./routes/billingRoutes')(app);
 // the above line is equivalent to const authroutes and calling authroutes(app)
 //authRoutes(app);
 
-app.get('/', (req, res) =>  {
-    res.send({hi:'there'});
-});
+// app.get('/', (req, res) =>  {
+//     res.send({hi:'there'});
+// });
 
 
 if(process.env.NODE_ENV === 'production'){
@@ -60,7 +60,7 @@ if(process.env.NODE_ENV === 'production'){
     const path = require('path');
     app.get('*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'client','build','index.html'));
-    })
+    });
 }
 
 
