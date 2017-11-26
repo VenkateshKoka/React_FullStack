@@ -12,6 +12,7 @@ const authRoutes = require('./routes/authRoutes');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 
@@ -41,6 +42,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 // the above line is equivalent to const authroutes and calling authroutes(app)
 //authRoutes(app);
